@@ -16,8 +16,6 @@ public abstract class AbstractWeiboApiTest
 
 	protected WeiboTemplate createWeiboTemplate()
 	{
-		String accessToken = System.getenv("weibo.accessToken");
-
-		return new WeiboTemplate(accessToken);
+		return new WeiboTemplate(System.getenv("weibo.accessToken"));
 	}
 }
