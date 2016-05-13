@@ -8,7 +8,7 @@ abstract class VisibleMixin extends WeiboObjectMixin
 {
 	@JsonProperty("type")
 	Integer type;
-	
+
 	@JsonProperty("list_id")
 	Integer listId;
 

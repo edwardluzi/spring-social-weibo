@@ -15,7 +15,7 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations
 	{
 		super(restOperations, objectMapper, isAuthorized);
 	}
-	
+
 	public WeiboProfile getUserProfileById(long uid)
 	{
 		requireAuthorization();

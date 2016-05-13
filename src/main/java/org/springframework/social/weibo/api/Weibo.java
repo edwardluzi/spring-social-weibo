@@ -6,6 +6,6 @@ import org.springframework.web.client.RestOperations;
 public interface Weibo extends ApiBinding
 {
 	ProfileOperations profileOperations();
-	
+
 	RestOperations restOperations();
 }

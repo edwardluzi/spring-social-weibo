@@ -1,14 +1,11 @@
 package org.springframework.social.weibo.api.impl;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
-
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.oauth2.OAuth2Version;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-
 import org.springframework.social.weibo.api.ProfileOperations;
-
 import org.springframework.social.weibo.api.Weibo;
 import org.springframework.social.weibo.api.impl.json.WeiboModule;
 import org.springframework.web.client.RestOperations;

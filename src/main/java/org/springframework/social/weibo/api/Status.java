@@ -7,7 +7,7 @@ import java.util.List;
 public class Status extends WeiboObject implements Serializable
 {
 	private static final long serialVersionUID = 7013829441915561166L;
-	
+
 	private String createdAt;
 	private Long id;
 	private Long mid;
