@@ -3,13 +3,9 @@ package org.springframework.social.weibo.api.impl;
 import org.junit.After;
 import org.junit.Before;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.social.weibo.api.Weibo;
 
-@ComponentScan(basePackages = "org.springframework.social.weibo")
-@PropertySource("classpath:application.properties")
 public class AbstractWeiboApiTest
 {
 	private AnnotationConfigApplicationContext applicationContext;
