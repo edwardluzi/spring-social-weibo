@@ -15,78 +15,76 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WeiboTemplate extends AbstractOAuth2ApiBinding implements Weibo
 {
-	private ProfileOperations profileOperations;
-	private ObjectMapper objectMapper;
+    private ProfileOperations profileOperations;
+    private ObjectMapper objectMapper;
 
-	public WeiboTemplate(String accessToken)
-	{
-		super(accessToken);
-		initialize();
-	}
+    public WeiboTemplate(String accessToken)
+    {
+        super(accessToken);
+        initialize();
+    }
 
-	public WeiboTemplate()
-	{
-		initialize();
-	}
+    public WeiboTemplate()
+    {
+        initialize();
+    }
 
-	public ProfileOperations profileOperations()
-	{
-		return profileOperations;
-	}
+    public ProfileOperations profileOperations()
+    {
+        return profileOperations;
+    }
 
-	public RestOperations restOperations()
-	{
-		return getRestTemplate();
-	}
+    public RestOperations restOperations()
+    {
+        return getRestTemplate();
+    }
 
-	protected ObjectMapper getObjectMapper()
-	{
-		return objectMapper;
-	}
+    protected ObjectMapper getObjectMapper()
+    {
+        return objectMapper;
+    }
 
-	@Override
-	public void setRequestFactory(ClientHttpRequestFactory requestFactory)
-	{
-		// Wrap the request factory with a BufferingClientHttpRequestFactory so
-		// that the error handler can do repeat reads on the response.getBody()
-		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(requestFactory));
-	}
+    @Override
+    public void setRequestFactory(ClientHttpRequestFactory requestFactory)
+    {
+        // Wrap the request factory with a BufferingClientHttpRequestFactory so
+        // that the error handler can do repeat reads on the response.getBody()
+        super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(requestFactory));
+    }
 
-	@Override
-	protected OAuth2Version getOAuth2Version()
-	{
-		return OAuth2Version.BEARER_DRAFT_2;
-	}
+    @Override
+    protected OAuth2Version getOAuth2Version()
+    {
+        return OAuth2Version.BEARER_DRAFT_2;
+    }
 
-	@Override
-	protected void configureRestTemplate(RestTemplate restTemplate)
-	{
-		super.configureRestTemplate(restTemplate);
-		restTemplate.setErrorHandler(new WeiboErrorHandler());
-	}
+    @Override
+    protected void configureRestTemplate(RestTemplate restTemplate)
+    {
+        super.configureRestTemplate(restTemplate);
+        restTemplate.setErrorHandler(new WeiboErrorHandler());
+    }
 
-	@Override
-	protected MappingJackson2HttpMessageConverter getJsonMessageConverter()
-	{
-		MappingJackson2HttpMessageConverter converter = super.getJsonMessageConverter();
-		objectMapper = new ObjectMapper();
-		objectMapper.registerModule(new WeiboModule());
-		converter.setObjectMapper(objectMapper);
-		return converter;
-	}
+    @Override
+    protected MappingJackson2HttpMessageConverter getJsonMessageConverter()
+    {
+        MappingJackson2HttpMessageConverter converter = super.getJsonMessageConverter();
+        objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new WeiboModule());
+        converter.setObjectMapper(objectMapper);
+        return converter;
+    }
 
-	private void initialize()
-	{
-		// Wrap the request factory with a BufferingClientHttpRequestFactory so
-		// that the error handler can do repeat reads on the response.getBody()
-		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate()
-				.getRequestFactory()));
-		initSubApis();
-	}
+    private void initialize()
+    {
+        // Wrap the request factory with a BufferingClientHttpRequestFactory so
+        // that the error handler can do repeat reads on the response.getBody()
+        super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
+        initSubApis();
+    }
 
-	private void initSubApis()
-	{
-		this.profileOperations = new ProfileTemplate(getRestTemplate(), objectMapper,
-				isAuthorized());
-	}
+    private void initSubApis()
+    {
+        profileOperations = new ProfileTemplate(getRestTemplate(), objectMapper, isAuthorized());
+    }
 }

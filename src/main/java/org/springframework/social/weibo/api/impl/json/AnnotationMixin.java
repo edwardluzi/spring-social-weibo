@@ -6,6 +6,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class AnnotationMixin extends WeiboObjectMixin
 {
-	@JsonPropertyDescription("client_mblogid")
-	String clientMblogid;
+    @JsonPropertyDescription("client_mblogid")
+    String clientMblogid;
 }

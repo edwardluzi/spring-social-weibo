@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class VisibleMixin extends WeiboObjectMixin
 {
-	@JsonProperty("type")
-	Integer type;
+    @JsonProperty("type")
+    Integer type;
 
-	@JsonProperty("list_id")
-	Integer listId;
+    @JsonProperty("list_id")
+    Integer listId;
 
-	VisibleMixin(@JsonProperty("type") Integer type, @JsonProperty("list_id") Integer listId)
-	{
-	}
+    VisibleMixin(@JsonProperty("type") Integer type, @JsonProperty("list_id") Integer listId)
+    {
+    }
 }

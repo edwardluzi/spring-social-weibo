@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class PicUrlMixin extends WeiboObjectMixin
 {
-	@JsonProperty("thumbnail_pic")
-	String thumbnailPic;
+    @JsonProperty("thumbnail_pic")
+    String thumbnailPic;
 
 }

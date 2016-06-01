@@ -8,25 +8,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 class ProfileTemplate extends AbstractTemplate implements ProfileOperations
 {
-	private static final String API_URL_USERS = "users/show.json";
+    private static final String API_URL_USERS = "users/show.json";
 
-	public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper,
-			boolean isAuthorized)
-	{
-		super(restOperations, objectMapper, isAuthorized);
-	}
+    public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper, boolean isAuthorized)
+    {
+        super(restOperations, objectMapper, isAuthorized);
+    }
 
-	public WeiboProfile getUserProfileById(long uid)
-	{
-		requireAuthorization();
-		return this.getRestOperations().getForObject(buildUri(API_URL_USERS, "uid", uid),
-				WeiboProfile.class);
-	}
+    public WeiboProfile getUserProfileById(long uid)
+    {
+        requireAuthorization();
+        return getRestOperations().getForObject(buildUri(API_URL_USERS, "uid", uid), WeiboProfile.class);
+    }
 
-	public WeiboProfile getUserProfileByScreenName(String screenName)
-	{
-		requireAuthorization();
-		return this.getRestOperations().getForObject(
-				buildUri("users/show.json", "screen_name", screenName), WeiboProfile.class);
-	}
+    public WeiboProfile getUserProfileByScreenName(String screenName)
+    {
+        requireAuthorization();
+        return getRestOperations().getForObject(buildUri("users/show.json", "screen_name", screenName),
+                WeiboProfile.class);
+    }
 }

@@ -11,10 +11,10 @@ import org.springframework.social.weibo.api.WeiboProfile;
 @PropertySource("classpath:application.properties")
 public class ProfileTemplateTest extends AbstractWeiboApiTest
 {
-	@Test
-	public void getUserProfile()
-	{
-		WeiboProfile profile = weibo.profileOperations().getUserProfileById(2191924704L);
-		assertEquals(profile.getId(), Long.valueOf(2191924704L));
-	}
+    @Test
+    public void getUserProfile()
+    {
+        WeiboProfile profile = weibo.profileOperations().getUserProfileById(2191924704L);
+        assertEquals(profile.getId(), Long.valueOf(2191924704L));
+    }
 }

@@ -8,31 +8,30 @@ import org.springframework.social.weibo.api.Weibo;
 
 public class AbstractWeiboApiTest
 {
-	private AnnotationConfigApplicationContext applicationContext;
-	private Environment environment;
+    private AnnotationConfigApplicationContext applicationContext;
+    private Environment environment;
 
-	protected Weibo weibo;
+    protected Weibo weibo;
 
-	@Before
-	public void setup()
-	{
-		this.applicationContext = new AnnotationConfigApplicationContext(AbstractWeiboApiTest.class);
-		this.environment = this.applicationContext.getEnvironment();
+    @Before
+    public void setup()
+    {
+        applicationContext = new AnnotationConfigApplicationContext(AbstractWeiboApiTest.class);
+        environment = applicationContext.getEnvironment();
+        weibo = createWeiboTemplate();
+    }
 
-		this.weibo = createWeiboTemplate();
-	}
+    @After
+    public void tearDown()
+    {
+        if (applicationContext != null)
+        {
+            applicationContext.close();
+        }
+    }
 
-	@After
-	public void tearDown()
-	{
-		if (this.applicationContext != null)
-		{
-			this.applicationContext.close();
-		}
-	}
-
-	protected Weibo createWeiboTemplate()
-	{
-		return new WeiboTemplate(this.environment.getProperty("social.weibo.accessToken"));
-	}
+    protected Weibo createWeiboTemplate()
+    {
+        return new WeiboTemplate(environment.getProperty("social.weibo.accessToken"));
+    }
 }
