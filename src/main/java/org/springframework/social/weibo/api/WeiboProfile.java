@@ -10,7 +10,7 @@ public class WeiboProfile extends WeiboObject implements Serializable
 
     private String idstr;
 
-    private Integer _class;
+    private Integer clazz;
 
     private String screenName;
 
@@ -114,9 +114,9 @@ public class WeiboProfile extends WeiboObject implements Serializable
         return idstr;
     }
 
-    public Integer getClass_()
+    public Integer getClazz()
     {
-        return _class;
+        return clazz;
     }
 
     public String getScreenName()

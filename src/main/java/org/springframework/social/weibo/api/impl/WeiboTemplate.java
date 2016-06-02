@@ -29,11 +29,13 @@ public class WeiboTemplate extends AbstractOAuth2ApiBinding implements Weibo
         initialize();
     }
 
+    @Override
     public ProfileOperations profileOperations()
     {
         return profileOperations;
     }
 
+    @Override
     public RestOperations restOperations()
     {
         return getRestTemplate();

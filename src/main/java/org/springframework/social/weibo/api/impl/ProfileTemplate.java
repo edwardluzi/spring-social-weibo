@@ -15,12 +15,14 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations
         super(restOperations, objectMapper, isAuthorized);
     }
 
+    @Override
     public WeiboProfile getUserProfileById(long uid)
     {
         requireAuthorization();
         return getRestOperations().getForObject(buildUri(API_URL_USERS, "uid", uid), WeiboProfile.class);
     }
 
+    @Override
     public WeiboProfile getUserProfileByScreenName(String screenName)
     {
         requireAuthorization();

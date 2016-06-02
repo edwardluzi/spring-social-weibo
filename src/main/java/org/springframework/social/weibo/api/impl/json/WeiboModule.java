@@ -12,9 +12,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class WeiboModule extends SimpleModule
 {
-    /**
-	 * 
-	 */
     private static final long serialVersionUID = 2187084305052393830L;
 
     public WeiboModule()

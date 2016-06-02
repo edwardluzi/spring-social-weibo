@@ -13,7 +13,7 @@ abstract class WeiboProfileMixin extends WeiboObjectMixin
     @JsonProperty("idstr")
     String idstr;
     @JsonProperty("class")
-    Integer _class;
+    Integer clazz;
     @JsonProperty("screen_name")
     String screenName;
     @JsonProperty("name")
